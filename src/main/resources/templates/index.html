@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+    @-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.display{
+    background-color:#e9b9b5
+}
+    body {
+
+    background: #e8b8b5;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #333;
+    line-height: 25px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+}
+
+        span{
+background-color:#e9b9b5
+        font-size:30px;
+             }
+        div{
+         margin:auto;
+         }
+         h1{
+         text-align:center;
+
+         }
+         p{
+         text-align:center;
+font-weight:bold;
+         }
+    </style>
+
+</head>
+<body style="background-image:slide1.jpg">
+
+<form  method="post">
+<p> <input type="text" name="city" th:attr="value = ${city1}"  placeholder="City">
+<input style="box-shadow: 0 5px 50px -10px #fff; background-color:#E91E63; color:white; border-radius:5px; border-width:0px;" type="submit" value="Submit">
+</p>
+</form>
+
+<div>
+   <p> <span class="display" > City </span>
+    <span th:text="${sys.name}"></span>
+   </p>
+    <p>
+    <span>Country</span>
+        <span  th:text="${sys.sys.country}"></span></p>
+<p><span>Longitude</span>
+<span th:text="${sys.coord.lon}"></span>
+    </p>
+<p><span>Latitude</span>
+<span th:text="${sys.coord.lat}"></span>
+</p>
+<p><span>Minimum Temperature</span>
+<span th:text="${sys.main.temp_min}"></span>
+</p>
+<p>
+    <span>Maximum Temperature</span>
+<span th:text="${sys.main.temp_max}"></span>
+</p>
+<p>
+<span>Feels like</span>
+<span th:text="${sys.main.feels_like}"></span>
+</p>
+<p>
+<span>Desription</span>
+<span th:text="${sys.weather[0].description}"></span>
+</p>
+<p ><img style="width:150px;border-width:10px;border-style:ridge;border-color:grey;" th:attr="src=@{'https://openweathermap.org/img/w/'+${sys.weather[0].icon}+.png}"/>
+</p>
+    </div>
+</body>
+
+</html>

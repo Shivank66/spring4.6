@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         p{
+         font-size:30px;
+         text-align:center;
+font-weight:bold;
+         }
+    </style>
+
+</head>
+<body>
+<form method="post">
+    <p><input type="text" name="lat" th:attr="value=${lat}" placeholder="Latitude">
+<input type="text" name="lon" th:attr="value=${lon}"placeholder="Longitude">
+<input type="submit" value="Submit">
+    </p>
+</form>
+
+<div>
+    <p> <span > City </span>
+        <span th:text="${sys.name}"></span>
+    </p>
+    <p>
+        <span>Country</span>
+        <span  th:text="${sys.sys.country}"></span></p>
+    <p><span>Longitude</span>
+        <span th:text="${sys.coord.lon}"></span>
+    </p>
+    <p><span>Latitude</span>
+        <span th:text="${sys.coord.lat}"></span>
+    </p>
+    <p><span>Minimum Temperature</span>
+        <span th:text="${sys.main.temp_min}"></span>
+    </p>
+    <p>
+        <span>Maximum Temperature</span>
+        <span th:text="${sys.main.temp_max}"></span>
+    </p>
+    <p>
+        <span>Feels like</span>
+        <span th:text="${sys.main.feels_like}"></span>
+    </p>
+    <p>
+        <span>Desription</span>
+        <span th:text="${sys.weather[0].description}"></span>
+    </p>
+    <p ><img style="width:150px;border-width:10px;border-style:ridge;border-color:grey;" th:attr="src=@{'https://openweathermap.org/img/w/'+${sys.weather[0].icon}+.png}"/>
+    </p>
+</div>
+</body>
+</html>
